@@ -2,17 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "agents": {
     "research-director": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Sisyphus Academica — autonomous research paper writing army conductor. Deploys 7+ specialized subagents including 6 novelty engines and 10 adversarial reviewers.",
       "skills": [
         "skill-academic-humanizer"
       ],
       "fallback_models": [
-        { "model": "9router/opencode-free", "variant": "think" },
-        { "model": "9router/opencode-free" },
-        { "model": "9router/primary" },
-        { "model": "9router/fast" }
+        { "model": "ollama/gemma4:31b-mxfp8" }
       ],
       "permission": {
         "bash": "allow",
@@ -23,42 +20,40 @@
         "edit": "deny",
         "doom_loop": "ask",
         "external_directory": {
-          "/root/sisyphus-academica/*": "allow",
-          "/root/.config/opencode/skills/humanizer/*": "allow",
+          "/Users/jingzhang/Documents/git_repo/sisyphus-academica/*": "allow",
+          "/Users/jingzhang/.config/opencode/skills/humanizer/*": "allow",
           "/tmp/opencode/*": "allow"
         }
       }
     },
     "literature-scout": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "fast",
       "description": "Multi-source literature search — arXiv, Semantic Scholar, CrossRef, OpenAlex",
       "skills": [],
       "fallback_models": [
-        { "model": "9router/opencode-free", "variant": "fast" },
-        { "model": "9router/fast" }
+        { "model": "ollama/gemma4:31b-mxfp8" }
       ],
       "permission": {
         "bash": "allow",
         "webfetch": "allow",
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "edit": "deny",
         "task": "deny"
       }
     },
     "writer": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Paper section writer with 41 Humanizer patterns as hard generation constraints",
       "skills": ["humanizer", "skill-academic-humanizer"],
       "fallback_models": [
-        { "model": "9router/opencode-free", "variant": "think" },
-        { "model": "9router/primary" }
+        { "model": "ollama/gemma4:31b-mxfp8" }
       ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "webfetch": "allow",
         "bash": "deny",
         "edit": "deny",
@@ -66,13 +61,16 @@
       }
     },
     "verifier": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "3-module verification — citation accuracy, statistical validity, AI-pattern detection",
       "skills": ["humanizer", "skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "allow",
         "webfetch": "allow",
         "edit": "deny",
@@ -80,13 +78,16 @@
       }
     },
     "style-auditor": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Final Humanizer certification gate — 41 pattern scan, em dash zero, voice consistency",
       "skills": ["humanizer", "skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -94,27 +95,30 @@
       }
     },
     "formatter": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "fast",
       "description": "LaTeX template formatting, BibTeX, figure embedding, PDF compilation",
       "skills": [],
       "permission": {
         "bash": "allow",
         "read": "allow",
-        "write": { "/root/sisyphus-academica/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/*": "allow" },
         "webfetch": "allow",
         "edit": "deny",
         "task": "deny"
       }
     },
     "heretic": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Crown jewel novelty engine. Generates 50 wild hypotheses from title+abstract, then scores against actual paper.",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -122,13 +126,16 @@
       }
     },
     "contrarian": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Novelty engine — inverts well-established field claims",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -136,13 +143,16 @@
       }
     },
     "cross-pollinator": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Novelty engine — imports solutions from distant fields",
       "skills": [],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -150,13 +160,16 @@
       }
     },
     "assumption-excavator": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Novelty engine — enumerates and tests unstated assumptions",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -164,13 +177,16 @@
       }
     },
     "counterfactual-generator": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Novelty engine — rewrites field history without key papers",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -178,13 +194,16 @@
       }
     },
     "paradox-sifter": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Novelty engine — finds contradictions everyone ignores",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -192,13 +211,16 @@
       }
     },
     "theorist": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Adversarial reviewer — checks formal rigor and proofs",
       "skills": ["skill-academic-humanizer"],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -206,13 +228,16 @@
       }
     },
     "empiricist": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Adversarial reviewer — checks experimental rigor and baselines",
       "skills": [],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -220,13 +245,16 @@
       }
     },
     "skeptic": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "fast",
       "description": "Adversarial reviewer — default position: results are wrong",
       "skills": [],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -234,13 +262,16 @@
       }
     },
     "methodologist": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "think",
       "description": "Adversarial reviewer — checks statistical methodology",
       "skills": [],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",
@@ -248,13 +279,16 @@
       }
     },
     "historian": {
-      "model": "9router/opencode-free",
+      "model": "ollama/qwen3.6:35b-a3b-mxfp8",
       "variant": "fast",
       "description": "Adversarial reviewer — checks prior art and citation accuracy",
       "skills": [],
+      "fallback_models": [
+        { "model": "ollama/gemma4:31b-mxfp8" }
+      ],
       "permission": {
         "read": "allow",
-        "write": { "/root/sisyphus-academica/out/papers/*": "allow" },
+        "write": { "/Users/jingzhang/Documents/git_repo/sisyphus-academica/out/papers/*": "allow" },
         "bash": "deny",
         "webfetch": "allow",
         "edit": "deny",

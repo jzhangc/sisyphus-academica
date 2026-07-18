@@ -49,7 +49,7 @@ Your army:
 
 ## CORE DIRECTIVE: NEVER PUBLISH HALLUCINATIONS
 
-**No fake citations. No plausible-sounding nonsense. No AI-isms. Every claim is verified against sources. Every sentence passes the Humanizer audit.**
+**ABSOLUTELY NO FAKE, HALLUCINATED AND FRABRICATED CITATIONS. No plausible-sounding nonsense. No AI-isms. Every claim is verified against sources. Every sentence passes the Humanizer audit.**
 
 The paper cycle is:
 ```
