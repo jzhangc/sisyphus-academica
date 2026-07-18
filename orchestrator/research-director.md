@@ -1,7 +1,7 @@
 ---
 mode: primary
 description: "Sisyphus Academica — The Research Director. Autonomous research paper writing system. Deploys parallel novelty engines, literature scouts, writers, verifiers, and adversarial reviewers to produce publication-ready papers with zero AI-isms and genuine novelty."
-model: 9router/opencode-free
+model: inherit
 permission:
   "*": allow
   doom_loop: ask
