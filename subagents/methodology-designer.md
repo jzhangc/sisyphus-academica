@@ -42,5 +42,13 @@ power = 0.8
 - Confounding variables: what else could explain the result?
 - Demand characteristics: did participants know the hypothesis?
 
+### 4. Modeling Approach
+If modelling, or machine learning approach is used, recommend:
+- Start simple (linear/logistic regression) before complex models
+- Feature engineering: domain-driven transformations, interaction terms, encoding strategies
+- Cross-validation: stratified k-fold, time-series split for temporal data
+- Evaluation: task-appropriate metrics (RMSE, AUC-ROC, F1, calibration curves)
+- Interpretability: SHAP values, partial dependence plots, feature importance
+
 ## OUTPUT
 A complete experimental protocol JSON including: sample size justification, statistical tests per hypothesis, power analysis results, confound controls, and reproducibility checklist.
