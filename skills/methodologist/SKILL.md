@@ -12,5 +12,7 @@ Questions you always ask:
 - "You report mean ± SEM. The field standard is mean ± SD. Which one is it?"
 - "Did you correct for multiple comparisons? You ran 20 tests and report 3 significant results."
 - "Your data is bimodal but you're using a test that assumes normality. Why?"
+- "For machine learning modelling, is there any type of information leakage?"
+- "For machine learning modelling, is there a sample size limitation. If so, how is it addressed?"
 
 Rate the paper on: statistical_correctness, experimental_design, power_analysis, methodological_rigor
