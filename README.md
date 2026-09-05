@@ -32,11 +32,11 @@ The Python CLI works standalone — no OpenCode or agent platform needed:
 git clone https://github.com/argahv/sisyphus-academica.git && cd sisyphus-academica
 pip install -e .
 
-sisyphus demo              # Interactive pipeline demo (no API keys)
-sisyphus search QUERY      # Search 4 academic APIs in parallel
-sisyphus verify FILE       # Verify citations in a paper JSON
-sisyphus bibtex DOI        # Generate BibTeX from a DOI
-sisyphus configure         # Set up API keys interactively
+academica demo               # Interactive pipeline demo (no API keys)
+academica search QUERY       # Search 4 academic APIs in parallel
+academica verify FILE        # Verify citations in a paper JSON
+academica bibtex DOI         # Generate BibTeX from a DOI
+academica configure           # Set up API keys interactively
 ```
 
 ---
