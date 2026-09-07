@@ -30,23 +30,23 @@ def main():
     elif command == "search":
         query = " ".join(args[1:]) if len(args) > 1 else ""
         if not query:
-            print("Usage: sisyphus search QUERY")
+            print("Usage: academica search QUERY")
             sys.exit(1)
-        from sisyphus.tools.literature_client import search_all
+        from openbioacademia.tools.literature_client import search_all
         import json
         results = search_all(query)
         print(json.dumps(results, indent=2))
     elif command == "verify":
         if len(args) < 2:
-            print("Usage: sisyphus verify FILE (or --citation CITATION)")
+            print("Usage: academica verify FILE (or --citation CITATION)")
             sys.exit(1)
         if args[1] == "--citation":
-            from sisyphus.tools.citation_verifier import verify_citation
+            from openbioacademia.tools.citation_verifier import verify_citation
             import json
             result = verify_citation("manual", " ".join(args[2:]))
             print(json.dumps(result, indent=2))
         else:
-            from sisyphus.tools.citation_verifier import verify_citations
+            from openbioacademia.tools.citation_verifier import verify_citations
             import json
             with open(args[1]) as f:
                 findings = json.load(f)
@@ -54,9 +54,9 @@ def main():
             print(json.dumps(result, indent=2))
     elif command == "bibtex":
         if len(args) < 2:
-            print("Usage: sisyphus bibtex DOI")
+            print("Usage: academica bibtex DOI")
             sys.exit(1)
-        from sisyphus.tools.citation_verifier import generate_bibtex
+        from openbioacademia.tools.citation_verifier import generate_bibtex
         bib = generate_bibtex({"doi": args[1], "title": "Untitled", "year": "n.d."})
         print(bib)
     else:

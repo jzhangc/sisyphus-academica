@@ -1,1 +1,0 @@
-# Sisyphus Academica — Research Pipeline

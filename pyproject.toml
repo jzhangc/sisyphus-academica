@@ -3,13 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.backends._legacy:_Backend"
 
 [project]
-name = "sisyphus-academica"
+name = "openbioacademia"
 version = "0.2.0"
 description = "Open-source research pipeline — literature review, novelty generation, citation verification, and adversarial review."
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    { name = "argahv" }
+     { name = "jzhangc" }
 ]
 requires-python = ">=3.10"
 keywords = ["research", "academic", "citation-verification", "literature-review", "multi-agent"]
@@ -25,9 +25,9 @@ classifiers = [
 ]
 
 [project.urls]
-"Source" = "https://github.com/argahv/sisyphus-academica"
-"Bug Tracker" = "https://github.com/argahv/sisyphus-academica/issues"
-"Homepage" = "https://argahv.github.io/sisyphus-academica/"
+"Source" = "https://github.com/jzhangc/OpenBioAcademia"
+"Bug Tracker" = "https://github.com/jzhangc/OpenBioAcademia/issues"
+"Homepage" = "https://jzhangc.github.io/OpenBioAcademia/"
 
 [project.optional-dependencies]
 dev = [
@@ -48,11 +48,11 @@ all = [
 ]
 
 [project.scripts]
-academica = "sisyphus.cli:main"
+academica = "openbioacademia.cli:main"
 
 [tool.setuptools]
-packages = ["sisyphus", "sisyphus.tools"]
-package-dir = {"sisyphus" = "src/sisyphus", "sisyphus.tools" = "tools"}
+packages = ["openbioacademia", "openbioacademia.tools"]
+package-dir = {"openbioacademia" = "src/openbioacademia", "openbioacademia.tools" = "tools"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

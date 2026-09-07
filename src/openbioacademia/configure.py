@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sisyphus Academica — Interactive configuration."""
+"""OpenBioAcademia — Interactive configuration."""
 
 import shutil
 from pathlib import Path
@@ -11,7 +11,7 @@ def run_configure():
     env_example = repo_dir / ".env.example"
     env_file = repo_dir / ".env"
 
-    print("Sisyphus Academica — Configuration")
+    print("OpenBioAcademia — Configuration")
     print()
 
     if not env_file.exists() and env_example.exists():
@@ -36,7 +36,7 @@ def run_configure():
 
     print()
     print("  Done. You can now run:")
-    print("    sisyphus demo")
+    print("    academica demo")
 
     # Create output dirs
     for d in ["out/papers", "out/figures", "data"]:

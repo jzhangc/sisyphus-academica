@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Sisyphus Academica — Demo Mode. No API keys required."""
+"""OpenBioAcademia — Demo Mode. No API keys required."""
 
 import textwrap
 
 
 def run_demo():
-    """Print a demo of the Sisyphus pipeline using example data."""
+    """Print a demo of the OpenBioAcademia pipeline using example data."""
     print("╔═══════════════════════════════════════════════╗")
-    print("║     Sisyphus Academica — Demo Mode            ║")
+    print("║     OpenBioAcademia — Demo Mode                ║")
     print("╚═══════════════════════════════════════════════╝")
     print()
     print("Running pipeline on example topic: 'Transformer Efficiency'")
@@ -97,7 +97,7 @@ def run_demo():
     print("  Demo complete.")
     print()
     print("  To run the real pipeline:")
-    print("    sisyphus write \"your topic\"")
+    print("    academica write \"your topic\"")
     print()
     print("  Configure API keys:")
     print("    academica configure")

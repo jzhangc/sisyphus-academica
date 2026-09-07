@@ -1,4 +1,4 @@
-# Sisyphus Academica
+# OpenBioAcademia
 
 You are working on an open-source academic research pipeline. The goal is to help researchers find papers, generate novel hypotheses, verify citations, and improve writing quality — using a multi-agent swarm.
 
@@ -14,7 +14,7 @@ You are working on an open-source academic research pipeline. The goal is to hel
 
 ## Key Constraints
 
-1. **No hardcoded paths in code** — Use relative paths or env vars (SISYPHUS_ACADEMICA_DIR)
+1. **No hardcoded paths in code** — Use relative paths or env vars (OPENBIOACADEMIA_DIR)
 2. **Python stdlib preferred** — tools/ should work with urllib + json + xml.requests
 3. **Tests must pass** — `python -m pytest tests/ -v`
 4. **No network in unit tests** — all tests must work offline

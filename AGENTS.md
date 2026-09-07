@@ -1,4 +1,4 @@
-# Sisyphus Academica — Agent Onboarding
+# OpenBioAcademia — Agent Onboarding
 
 You are working on an open-source research pipeline: a multi-agent swarm that
 surveys the literature, generates novel hypotheses, verifies citations, and
@@ -33,7 +33,7 @@ academica configure                 # set API keys interactively
 | `reviewers/` (10) | Adversarial personas: theorist, empiricist, pragmatist, skeptic, historian, methodologist, ethicist, competitor, student, dreamer. All 10 must pass before formatting. |
 | `skills/` (17) | Portable `SKILL.md` skills. Each subdirectory holds one skill, e.g. `skills/heretic/SKILL.md`, `skills/skill-academic-humanizer/SKILL.md`. |
 | `tools/` | Stdlib-only Python CLI: `literature_client.py` (4-source search), `citation_verifier.py` (verify + BibTeX). |
-| `src/sisyphus/` | The `academica` CLI package: `cli.py`, `configure.py`, `demo.py`. `pyproject.toml` maps `sisyphus.tools` package-dir to `tools/`. |
+| `src/openbioacademia/` | The `academica` CLI package: `cli.py`, `configure.py`, `demo.py`. `pyproject.toml` maps `openbioacademia.tools` package-dir to `tools/`. |
 | `templates/` | LaTeX venue templates: `arxiv`, `iclr`, `icml`, `nature`, `neurips`. |
 | `config/agent-config.json` | Per-agent model + fallback config (provider-agnostic). |
 | `data/` | `research-memory.json` (cross-paper memory) and `voice-profile/` (author voice calibration). |
@@ -51,7 +51,7 @@ academica configure                 # set API keys interactively
 - **Agent prompts carry YAML frontmatter:** `mode` (subagent / skill),
   `description`, `skills`, and `permission` blocks.
 - **No hardcoded absolute paths in code.** Use relative paths or the
-  `SISYPHUS_ACADEMICA_DIR` env var.
+   `OPENBIOACADEMIA_DIR` env var.
 - **Em dash is a quality gate.** Generated prose must contain zero em dashes.
   The style auditor enforces this.
 

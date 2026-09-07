@@ -1,4 +1,4 @@
-"""Tests for the CLI module (src/sisyphus/cli.py)."""
+"""Tests for the CLI module (src/openbioacademia/cli.py)."""
 
 import sys
 from pathlib import Path
@@ -13,18 +13,18 @@ class TestCliHelp:
     """Test CLI entry point behavior."""
 
     def test_no_args_shows_help(self):
-        """sisyphus with no args should print help and not crash."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus"]):
+        """academica with no args should print help and not crash."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica"]):
             try:
                 main()
             except SystemExit:
                 pass  # Some implementations may exit
 
     def test_demo_command_runs(self):
-        """sisyphus demo should run without crashing."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "demo"]):
+        """academica demo should run without crashing."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "demo"]):
             try:
                 main()
             except SystemExit:
@@ -35,36 +35,36 @@ class TestCliCommands:
     """Test specific commands."""
 
     def test_configure_command_runs(self):
-        """sisyphus configure should start without crashing."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "configure"]):
+        """academica configure should start without crashing."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "configure"]):
             try:
                 main()
             except SystemExit:
                 pass
 
     def test_search_without_query_prints_usage(self):
-        """sisyphus search without query should show usage."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "search"]):
+        """academica search without query should show usage."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "search"]):
             try:
                 main()
             except SystemExit:
                 pass
 
     def test_bibtex_without_doi_prints_usage(self):
-        """sisyphus bibtex without DOI should show usage."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "bibtex"]):
+        """academica bibtex without DOI should show usage."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "bibtex"]):
             try:
                 main()
             except SystemExit:
                 pass
 
     def test_verify_without_args_prints_usage(self):
-        """sisyphus verify without args should show usage."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "verify"]):
+        """academica verify without args should show usage."""
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "verify"]):
             try:
                 main()
             except SystemExit:
@@ -72,8 +72,8 @@ class TestCliCommands:
 
     def test_unknown_command_prints_usage(self):
         """Unknown commands should not crash."""
-        from sisyphus.cli import main
-        with patch.object(sys, "argv", ["sisyphus", "nonexistent"]):
+        from openbioacademia.cli import main
+        with patch.object(sys, "argv", ["academica", "nonexistent"]):
             try:
                 main()
             except SystemExit:

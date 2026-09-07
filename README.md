@@ -1,23 +1,23 @@
 <div align="center">
 
-# Sisyphus Academica — The Research Paper Writing Army
+# OpenBioAcademia — The Research Paper Writing Army
 
 **20+ specialized agents. 6 novelty engines. 10 adversarial reviewers. Zero hallucinated citations. Zero AI-isms.**
 
 ⭐ **If you write research papers, star this repo — it will save you weeks of work.**
 
-[![CI](https://github.com/argahv/sisyphus-academica/actions/workflows/ci.yml/badge.svg)](https://github.com/argahv/sisyphus-academica/actions/workflows/ci.yml)
+[![CI](https://github.com/jzhangc/OpenBioAcademia/actions/workflows/ci.yml/badge.svg)](https://github.com/jzhangc/OpenBioAcademia/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](pyproject.toml)
-[![GitHub Stars](https://img.shields.io/github/stars/argahv/sisyphus-academica?style=social)](https://github.com/argahv/sisyphus-academica)
-[![Star History](https://api.star-history.com/svg?repos=argahv/sisyphus-academica&type=Date)](https://star-history.com/#argahv/sisyphus-academica)
+[![GitHub Stars](https://img.shields.io/github/stars/jzhangc/OpenBioAcademia?style=social)](https://github.com/jzhangc/OpenBioAcademia)
+[![Star History](https://api.star-history.com/svg?repos=jzhangc/OpenBioAcademia&type=Date)](https://star-history.com/#jzhangc/OpenBioAcademia)
 
 </div>
 
 Not a writing assistant. Not a chatbot with a LaTeX plugin. A **self-coordinating swarm** of 20+ specialized agents that produces publication-ready research papers with **genuine novelty, zero hallucinated citations, and no detectable AI-written patterns.**
 
 ```bash
-git clone https://github.com/argahv/sisyphus-academica.git && cd sisyphus-academica
+git clone https://github.com/jzhangc/OpenBioAcademia.git && cd OpenBioAcademia
 bash install.sh
 # Select "research-director" → "write a paper about [topic]"
 ```
@@ -29,7 +29,7 @@ bash install.sh
 The Python CLI works standalone — no OpenCode or agent platform needed:
 
 ```bash
-git clone https://github.com/argahv/sisyphus-academica.git && cd sisyphus-academica
+git clone https://github.com/jzhangc/OpenBioAcademia.git && cd OpenBioAcademia
 pip install -e .
 
 academica demo               # Interactive pipeline demo (no API keys)
@@ -46,7 +46,7 @@ academica configure           # Set up API keys interactively
 The novelty engines and reviewer personas are packaged as **standalone agent skills** — drop them into any agent that reads SKILL.md (Claude Code, Codex, Cursor, Gemini CLI, OpenCode, and more):
 
 ```bash
-git clone https://github.com/argahv/sisyphus-academica.git
+git clone https://github.com/jzhangc/OpenBioAcademia.git
 # Manual: copy individual skill directories
 cp -r skills/contrarian ~/.claude/skills/
 # Or use npx (see below)
@@ -55,9 +55,9 @@ cp -r skills/contrarian ~/.claude/skills/
 Or install any skill with a single command:
 
 ```bash
-npx skills add argahv/sisyphus-academica          # Browse and select interactively
-npx skills add argahv/sisyphus-academica -s '*'   # Install all 17 skills
-npx skills add argahv/sisyphus-academica -s contrarian  # Install one skill
+npx skills add jzhangc/OpenBioAcademia          # Browse and select interactively
+npx skills add jzhangc/OpenBioAcademia -s '*'   # Install all 17 skills
+npx skills add jzhangc/OpenBioAcademia -s contrarian  # Install one skill
 ```
 
 Then invoke directly in your agent:
@@ -92,8 +92,8 @@ Then it installs, configures, and verifies everything automatically.
 Paste this prompt into Claude Code, AmpCode, Cursor, or any agent:
 
 ```
-Install and configure Sisyphus Academica by following the instructions here:
-https://raw.githubusercontent.com/argahv/sisyphus-academica/main/docs/guide/installation.md
+Install and configure OpenBioAcademia by following the instructions here:
+https://raw.githubusercontent.com/jzhangc/OpenBioAcademia/main/docs/guide/installation.md
 ```
 
 ### Manual install — one line, no agent needed
@@ -101,7 +101,7 @@ https://raw.githubusercontent.com/argahv/sisyphus-academica/main/docs/guide/inst
 If you prefer to run the installer yourself:
 
 ```bash
-git clone https://github.com/argahv/sisyphus-academica.git && cd sisyphus-academica
+git clone https://github.com/jzhangc/OpenBioAcademia.git && cd OpenBioAcademia
 bash install.sh
 ```
 
@@ -115,7 +115,7 @@ bash install.sh --yes
 
 ## The Numbers (Not Claims)
 
-| Metric | GPT-4 / NotebookLM | Sisyphus Academica |
+| Metric | GPT-4 / NotebookLM | OpenBioAcademia |
 |---|---|---|
 | Papers surveyed per run | 10-50 | **500+** (5 parallel scouts) |
 | Citation hallucination rate | ~30-40% | **0%** (verified against 2+ APIs) |
@@ -135,8 +135,8 @@ bash install.sh --yes
 
 ```bash
 # 1. Clone + install
-git clone https://github.com/argahv/sisyphus-academica.git
-cd sisyphus-academica
+git clone https://github.com/jzhangc/OpenBioAcademia.git
+cd OpenBioAcademia
 bash install.sh
 
 # 2. Configure API keys (free)
@@ -289,7 +289,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Good first issues are tagged. Template s
 ## Directory Structure
 
 ```
-sisyphus-academica/
+OpenBioAcademia/
 ├── orchestrator/          # Research Director agent (the conductor)
 ├── subagents/             # Core writing pipeline agents (writer, verifier, etc.)
 ├── novelty-engines/       # 6 novelty generation agents
