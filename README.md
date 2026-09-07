@@ -10,8 +10,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](pyproject.toml)
 [![GitHub Stars](https://img.shields.io/github/stars/jzhangc/OpenBioAcademia?style=social)](https://github.com/jzhangc/OpenBioAcademia)
-[![Star History](https://api.star-history.com/svg?repos=jzhangc/OpenBioAcademia&type=Date)](https://star-history.com/#jzhangc/OpenBioAcademia)
-
 </div>
 
 Not a writing assistant. Not a chatbot with a LaTeX plugin. A **self-coordinating swarm** of 20+ specialized agents that produces publication-ready research papers with **genuine novelty, zero hallucinated citations, and no detectable AI-written patterns.**
