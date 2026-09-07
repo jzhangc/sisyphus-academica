@@ -4,8 +4,6 @@
 
 **20+ specialized agents. 6 novelty engines. 10 adversarial reviewers. Zero hallucinated citations. Zero AI-isms.**
 
-⭐ **If you write research papers, star this repo — it will save you weeks of work.**
-
 [![CI](https://github.com/jzhangc/OpenBioAcademia/actions/workflows/ci.yml/badge.svg)](https://github.com/jzhangc/OpenBioAcademia/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](pyproject.toml)
