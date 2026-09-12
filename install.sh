@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sisyphus Academica — Interactive Installer
+# OpenBioAcademia Academica — Interactive Installer
 # Installs 25 agents into OpenCode with portable paths, prompts for config
 #
 # Usage: bash install.sh [--yes] [--dev] [--latex] [--check]
@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-SISYPHUS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OPENBIOACADEMIA_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OPENCODE_AGENTS="${OPENCODE_AGENTS:-$HOME/.config/opencode/agents}"
 OPENCODE_SKILLS="${OPENCODE_SKILLS:-$HOME/.config/opencode/skills}"
 OPENCODE_CONFIG="${OPENCODE_CONFIG:-$HOME/.config/opencode}"
@@ -18,9 +18,9 @@ OPENCODE_CONFIG="${OPENCODE_CONFIG:-$HOME/.config/opencode}"
 SKIP_PROMPTS=false
 for arg in "$@"; do [ "$arg" = "--yes" ] && SKIP_PROMPTS=true && break; done
 
-echo "╔═══════════════════════════════════════════════════╗"
-echo "║     Sisyphus Academica — Interactive Installer    ║"
-echo "╚═══════════════════════════════════════════════════╝"
+echo "╔══════════════════════════════════════════════════════════╗"
+echo "║     OpenBioAcademia Academica — Interactive Installer    ║"
+echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
 
 # ------------------------------------------------------------------
@@ -65,13 +65,13 @@ echo ""
 ask AUTHOR_NAME "What is your name?" "${USER:-argahv}"
 
 # Write name to CITATION.cff
-if grep -q 'given-names: ""' "$SISYPHUS_DIR/CITATION.cff" 2>/dev/null; then
+if grep -q 'given-names: ""' "$OPENBIOACADEMIA_DIR/CITATION.cff" 2>/dev/null; then
     FAMILY="${AUTHOR_NAME##* }"
     GIVEN="${AUTHOR_NAME% *}"
     [ -z "$GIVEN" ] && GIVEN="$FAMILY" && FAMILY=""
     [ -z "$FAMILY" ] && FAMILY="$GIVEN" && GIVEN=""
-    sed -i "s/family-names: \".*\"/family-names: \"$FAMILY\"/" "$SISYPHUS_DIR/CITATION.cff"
-    sed -i "s/given-names: \".*\"/given-names: \"$GIVEN\"/" "$SISYPHUS_DIR/CITATION.cff"
+    sed -i "s/family-names: \".*\"/family-names: \"$FAMILY\"/" "$OPENBIOACADEMIA_DIR/CITATION.cff"
+    sed -i "s/given-names: \".*\"/given-names: \"$GIVEN\"/" "$OPENBIOACADEMIA_DIR/CITATION.cff"
     echo "  ✓ CITATION.cff updated with name: $GIVEN $FAMILY"
 fi
 
@@ -124,7 +124,7 @@ fi
 # Strong warning when no Claude (like omo's "MUST STRONGLY WARN")
 if [ "$HAS_CLAUDE" = false ]; then
     echo ""
-    echo "  ⚠ WARNING: Sisyphus Academica's writing and novelty engines work best"
+    echo "  ⚠ WARNING: OpenBioAcademia's writing and novelty engines work best"
     echo "    with Claude models. Without a Claude subscription, paper quality may"
     echo "    noticeably degrade. GPT models and free-tier alternatives will"
     echo "    require 2-3x more revision rounds to match Claude output."
@@ -154,15 +154,15 @@ echo "  ── API Keys ──"
 
 ask SEMANTIC_SCHOLAR_KEY "  Semantic Scholar API key? (free — get at semanticscholar.org/product/api)" ""
 if [ -n "$SEMANTIC_SCHOLAR_KEY" ]; then
-    if [ -f "$SISYPHUS_DIR/.env" ]; then
-        if grep -q 'SEMANTIC_SCHOLAR_API_KEY=' "$SISYPHUS_DIR/.env"; then
-            sed -i "s/SEMANTIC_SCHOLAR_API_KEY=.*/SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY/" "$SISYPHUS_DIR/.env"
+    if [ -f "$OPENBIOACADEMIA_DIR/.env" ]; then
+        if grep -q 'SEMANTIC_SCHOLAR_API_KEY=' "$OPENBIOACADEMIA_DIR/.env"; then
+            sed -i "s/SEMANTIC_SCHOLAR_API_KEY=.*/SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY/" "$OPENBIOACADEMIA_DIR/.env"
         else
-            echo "SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY" >> "$SISYPHUS_DIR/.env"
+            echo "SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY" >> "$OPENBIOACADEMIA_DIR/.env"
         fi
     else
-        cp "$SISYPHUS_DIR/.env.example" "$SISYPHUS_DIR/.env"
-        sed -i "s/SEMANTIC_SCHOLAR_API_KEY=.*/SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY/" "$SISYPHUS_DIR/.env"
+        cp "$OPENBIOACADEMIA_DIR/.env.example" "$OPENBIOACADEMIA_DIR/.env"
+        sed -i "s/SEMANTIC_SCHOLAR_API_KEY=.*/SEMANTIC_SCHOLAR_API_KEY=$SEMANTIC_SCHOLAR_KEY/" "$OPENBIOACADEMIA_DIR/.env"
     fi
     echo "  ✓ API key saved to .env"
 else
@@ -173,7 +173,7 @@ fi
 echo ""
 echo "  ── Voice Calibration ──"
 HAS_VOICE_SAMPLE=false
-if [ -f "$SISYPHUS_DIR/data/voice-profile/sample.txt" ]; then
+if [ -f "$OPENBIOACADEMIA_DIR/data/voice-profile/sample.txt" ]; then
     if confirm "  Voice sample found. Use existing?" "y"; then
         HAS_VOICE_SAMPLE=true
     fi
@@ -181,7 +181,7 @@ else
     if confirm "  Do you have a writing sample for voice calibration?" "n"; then
         HAS_VOICE_SAMPLE=true
         echo "  → Paste 2-3 paragraphs of published writing into:"
-        echo "    $SISYPHUS_DIR/data/voice-profile/sample.txt"
+        echo "    $OPENBIOACADEMIA_DIR/data/voice-profile/sample.txt"
     fi
 fi
 
@@ -235,7 +235,7 @@ install_agent_file() {
     fi
     mkdir -p "$OPENCODE_AGENTS"
     sed \
-        -e "s|/root/sisyphus-academica|$SISYPHUS_DIR|g" \
+        -e "s|/root/openbioacademia|$OPENBIOACADEMIA_DIR|g" \
         -e "s|/root/\.config/opencode|$OPENCODE_CONFIG|g" \
         -e "s|/root/\.local/share/opencode|$HOME/.local/share/opencode|g" \
         -e "s|/tmp/opencode|/tmp/opencode|g" \
@@ -247,7 +247,7 @@ install_agent_file() {
 # Transform config/agent-config.json
 # ==================================================================
 install_config() {
-    local src="$SISYPHUS_DIR/config/agent-config.json"
+    local src="$OPENBIOACADEMIA_DIR/config/agent-config.json"
     local dest="$OPENCODE_AGENTS/../agent-config.json"
     if [ ! -f "$src" ]; then
         echo "  ⚠ Missing config: $src"
@@ -255,7 +255,7 @@ install_config() {
     fi
     mkdir -p "$OPENCODE_CONFIG"
     sed \
-        -e "s|/root/sisyphus-academica|$SISYPHUS_DIR|g" \
+        -e "s|/root/openbioacademia|$OPENBIOACADEMIA_DIR|g" \
         -e "s|/root/\.config/opencode|$OPENCODE_CONFIG|g" \
         -e "s|/root/\.local/share/opencode|$HOME/.local/share/opencode|g" \
         "$src" > "$dest"
@@ -320,7 +320,7 @@ fi
 # ==================================================================
 echo "[2/7] Installing academic-humanizer skill..."
 mkdir -p "$OPENCODE_SKILLS/skill-academic-humanizer"
-cp "$SISYPHUS_DIR/skills/skill-academic-humanizer.md" "$OPENCODE_SKILLS/skill-academic-humanizer/SKILL.md" 2>/dev/null || \
+cp "$OPENBIOACADEMIA_DIR/skills/skill-academic-humanizer.md" "$OPENCODE_SKILLS/skill-academic-humanizer/SKILL.md" 2>/dev/null || \
     echo "  ⚠ Could not copy academic-humanizer"
 echo "  ✓ Academic Humanizer installed"
 
@@ -328,10 +328,10 @@ echo "  ✓ Academic Humanizer installed"
 # [3/7] Install orchestrator agents (25 total)
 # ==================================================================
 echo "[3/7] Installing orchestrator agents (25 total)..."
-install_agent_file "$SISYPHUS_DIR/orchestrator/research-director.md"
-for f in "$SISYPHUS_DIR/subagents/"*.md; do install_agent_file "$f"; done
-for f in "$SISYPHUS_DIR/novelty-engines/"*.md; do install_agent_file "$f"; done
-for f in "$SISYPHUS_DIR/reviewers/"*.md; do install_agent_file "$f"; done
+install_agent_file "$OPENBIOACADEMIA_DIR/orchestrator/research-director.md"
+for f in "$OPENBIOACADEMIA_DIR/subagents/"*.md; do install_agent_file "$f"; done
+for f in "$OPENBIOACADEMIA_DIR/novelty-engines/"*.md; do install_agent_file "$f"; done
+for f in "$OPENBIOACADEMIA_DIR/reviewers/"*.md; do install_agent_file "$f"; done
 echo "  → All agents installed in $OPENCODE_AGENTS"
 
 # ==================================================================
@@ -345,14 +345,14 @@ configure_models
 # [5/7] Set up directories and tools
 # ==================================================================
 echo "[5/7] Setting up directories..."
-chmod +x "$SISYPHUS_DIR/tools/"*.py 2>/dev/null || true
-mkdir -p "$SISYPHUS_DIR/data" "$SISYPHUS_DIR/out/papers" "$SISYPHUS_DIR/out/figures"
+chmod +x "$OPENBIOACADEMIA_DIR/tools/"*.py 2>/dev/null || true
+mkdir -p "$OPENBIOACADEMIA_DIR/data" "$OPENBIOACADEMIA_DIR/out/papers" "$OPENBIOACADEMIA_DIR/out/figures"
 
 if echo "$@" | grep -q -- "--dev"; then
     echo ""
     echo "[Optional] Installing Python dependencies..."
     if command -v pip3 &>/dev/null; then
-        pip3 install -r "$SISYPHUS_DIR/requirements.txt" 2>/dev/null || \
+        pip3 install -r "$OPENBIOACADEMIA_DIR/requirements.txt" 2>/dev/null || \
             echo "  ⚠ pip install failed (try: pip install -r requirements.txt)"
     else
         echo "  ⚠ pip3 not found."
@@ -382,8 +382,8 @@ echo "[7/7] Validating installation..."
 errors=0
 expected=25
 count=0
-for f in "$SISYPHUS_DIR/orchestrator/"*.md "$SISYPHUS_DIR/subagents/"*.md \
-         "$SISYPHUS_DIR/novelty-engines/"*.md "$SISYPHUS_DIR/reviewers/"*.md; do
+for f in "$OPENBIOACADEMIA_DIR/orchestrator/"*.md "$OPENBIOACADEMIA_DIR/subagents/"*.md \
+         "$OPENBIOACADEMIA_DIR/novelty-engines/"*.md "$OPENBIOACADEMIA_DIR/reviewers/"*.md; do
     base=$(basename "$f")
     [ -f "$OPENCODE_AGENTS/$base" ] && count=$((count + 1))
 done
@@ -392,14 +392,14 @@ echo "  Agents installed: $count / $expected"
 [ "$count" -ge "$expected" ] && echo "  ✓ All agents present" || { echo "  ⚠ Missing agents"; errors=$((errors + 1)); }
 
 [ -f "$OPENCODE_CONFIG/agent-config.json" ] && echo "  ✓ Configuration installed" || { echo "  ⚠ Configuration missing"; errors=$((errors + 1)); }
-[ -f "$SISYPHUS_DIR/.env" ] && echo "  ✓ .env configured" || echo "  ⚠ .env not configured — cp .env.example .env"
+[ -f "$OPENBIOACADEMIA_DIR/.env" ] && echo "  ✓ .env configured" || echo "  ⚠ .env not configured — cp .env.example .env"
 
 echo ""
 [ "$errors" -eq 0 ] && echo "  ✓ Validation PASSED" || echo "  ⚠ $errors issue(s) found"
 
 echo ""
 echo "╔═══════════════════════════════════════════════════╗"
-echo "║     Sisyphus Academica — INSTALLED                ║"
+echo "║     OpenBioAcademia — INSTALLED                   ║"
 echo "╚═══════════════════════════════════════════════════╝"
 echo ""
 echo "  Profile:   $AUTHOR_NAME"
@@ -411,4 +411,4 @@ echo "  Next:"
 echo "  1. OpenCode → agent tab → research-director"
 echo "  2. Type: \"write a paper about [topic]\""
 echo ""
-echo "  Docs: https://github.com/argahv/sisyphus-academica"
+echo "  Docs: https://github.com/jzhangc/openbioacademia"
