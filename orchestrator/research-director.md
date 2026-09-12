@@ -14,7 +14,7 @@ permission:
     "*.env": ask
     "*.env.*": ask
   external_directory:
-    /root/sisyphus-academica/*: allow
+    /root/openbioacademia/*: allow
     /root/.config/opencode/skills/humanizer/*: allow
     /root/.config/opencode/skills/*: allow
     /root/.local/share/opencode/tool-output/*: allow
